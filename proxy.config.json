@@ -1,0 +1,12 @@
+{
+    "/api/*": {
+      "target": "http://api-dev.kerketi.ge:8191/k-merchant-bridge/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+          "^/api": ""
+      }
+    }
+  
+  }  
