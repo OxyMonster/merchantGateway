@@ -1,0 +1,9 @@
+<div class="w-100 h-100 p-3 row justify-content-start">
+    <div class="col-lg-4" *ngFor="let item of allRegisteredCards">
+        <app-card [cardName] = '"Cherish Itzel"'
+                  (click) = 'onDelete(item)'></app-card>
+    </div>
+    <div class="col-12 d-flex justify-content-end" *ngIf="isDeleteBtnActive">
+        <button class="btn btn-danger">Delete</button>
+    </div>
+</div>

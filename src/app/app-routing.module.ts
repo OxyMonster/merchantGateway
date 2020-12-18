@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
      //  & & & Lazy Load * * * *
-  { path: '', loadChildren: './components/select-payment/select-payment.module#SelectPaymentModule' }, 
-];
+  { path: '', loadChildren: './components/payments/payments.module#PaymentsModule' }, 
+]; 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+  

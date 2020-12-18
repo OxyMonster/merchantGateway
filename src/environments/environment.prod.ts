@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  urlAddress: 'http://api-dev.kerketi.ge:8191/k-merchant-bridge/'
 };
+ 

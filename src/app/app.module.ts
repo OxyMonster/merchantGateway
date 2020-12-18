@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SelectPaymentModule } from './components/select-payment/select-payment.module';
+import { PaymentsModule } from './components/payments/payments.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SelectPaymentModule,
+    PaymentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
