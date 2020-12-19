@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faTrashAlt, faPlusSquare, faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faTrashAlt, faPlusSquare, faCreditCard, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -13,10 +14,13 @@ export class UserProfileComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   faPlusSquare= faPlusSquare
   faCreditCard = faCreditCard;
+  faSignOutAlt = faSignOutAlt;
  
   activeCategory: string = 'add'; 
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
 
   ngOnInit(): void {
@@ -24,6 +28,11 @@ export class UserProfileComponent implements OnInit {
 
   changeClass(type: string) {
     this.activeCategory = type;
+  };
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/wallet']);
   }
 
 }

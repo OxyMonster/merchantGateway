@@ -1,3 +1,35 @@
+<!-- Header -->
+<div class="header">
+  <div class="header__content d-flex justify-content-between">
+    <div class="header__content__info col-6 d-flex">
+      <div class="header__content__info__img">
+        <img src="assets/img/user.jpg" alt="">
+      </div>
+      <div class="header__content__info__name">
+        <p>გიორგი ზეიკიძე</p>
+      </div>
+    </div>
+   <div class="col-6 d-flex justify-content-end d-flex align-items-center">
+    <div class="header__content__logout"
+          style="	font-size: 30px; color: #E74C3C;">
+          <fa-icon [icon] = 'faSignOutAlt' 
+                   style="cursor: pointer;"          
+                   (click) = 'logOut()'></fa-icon>
+    </div>
+   </div>
+  </div>
+</div>
+
+<div class="header2">
+  <div class="header2__content h-100 d-flex align-items-center">
+    <div class="col-6">
+      <div class="header2__content__img">
+        <img src="assets/img/logo.png" alt="">
+      </div> 
+    </div>
+
+  </div>
+</div>
 <!-- ICONS --> 
 <svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
     <g id="shopping-cart" data-iconmelon="e-commerce icons:7c96e2dece0152dc594d66b260f79db0">
@@ -50,12 +82,12 @@
     <div id="left-side">
       <ul>
             <li class="pay"
-            (click) = 'changeClass("cards")'    
-            [ngClass]="{'active': activeCategory === 'cards'}" 
-            [routerLink]="['/wallet/user-profile/my-cards']" 
+            (click) = 'changeClass("ballance")'    
+            [ngClass]="{'active': activeCategory === 'ballance'}" 
+            [routerLink]="['/wallet/user-profile/wallet-ballance']" 
             routerLinkActive="active"
             >
-            <div class="icon" [ngClass]="{'active': activeCategory === 'cards'}" >
+            <div class="icon" [ngClass]="{'active': activeCategory === 'ballance'}" >
                 <svg viewBox="0 0 32 32">
                     <g filter="">
                     <use xlink:href="#credit-card"></use>
@@ -77,7 +109,7 @@
                         </g>
                     </svg>
             </div>
-            ბარათით გადახდა
+           დამატებული ბარათით გადახდა
         </li>
         <li class="choose"
             (click) = 'changeClass("add")'    
@@ -91,7 +123,7 @@
                 </g>
               </svg>
           </div>
-          ბარათის დამატება
+          ახალი ბარათით გადახდა
         </li>
         <li class="wrap"
             (click) = 'changeClass("delete")'    
@@ -113,10 +145,13 @@
     <div id="border">
       <div id="line" 
            class="one"
-           [ngClass]="{'one': activeCategory === 'add', 'two': activeCategory === 'cards', 'three': activeCategory === 'delete' }"></div>
+           [ngClass]="{ 'one': activeCategory === 'wallet-ballance',
+                        'two': activeCategory === 'add', 
+                        'three': activeCategory === 'cards', 
+                        'four': activeCategory === 'delete' }"></div>
     </div>
   
-    <div id="right-side">
+    <div id="right-side"> 
         <router-outlet></router-outlet>
     </div>
   </div>

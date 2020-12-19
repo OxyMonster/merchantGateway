@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { UtileSericeService } from './services/utile-serice.service';
 import { CardComponent } from './components/card/card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const COMPONENTS = [ 
   LoadingSpinnerComponent,
@@ -12,7 +13,8 @@ const COMPONENTS = [
 @NgModule({
   declarations: COMPONENTS,
   imports: [
-    CommonModule
+    CommonModule,
+    
   ],
   providers: [
     UtileSericeService

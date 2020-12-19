@@ -1,0 +1,18 @@
+$blue: #293b49;
+$pink: #fdabaf;
+$pink-light: #ffe0e6;
+$green: #04cba0;
+$green-dark: #01ac88;
+$white: white;
+.button {
+    margin-top: 4rem;
+    padding: 1.2rem 3rem;
+    color: $white;
+    background-color: $green;
+    font-family: 'mrgvlovani';
+    cursor: pointer;
+    
+    &:hover {
+      background-color: $green-dark;
+    }
+  }

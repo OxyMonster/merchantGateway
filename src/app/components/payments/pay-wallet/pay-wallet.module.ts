@@ -12,6 +12,7 @@ import { DeleteRegisteredCardsComponent } from './user-profile/delete-registered
 import { NgPaymentCardModule } from 'ng-payment-card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { WalletBallancePayComponent } from './user-profile/wallet-ballance-pay/wallet-ballance-pay.component';
 
 
 
@@ -23,13 +24,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RegisterNewCardComponent,
     ListRegisteredCardsComponent,
     DeleteRegisteredCardsComponent,
+    WalletBallancePayComponent,
   ],
   imports: [
     CommonModule,
+    FontAwesomeModule,
     RouterModule, 
     FormsModule,
-    SharedModule,
-    // FontAwesomeModule,
+    SharedModule, 
     ReactiveFormsModule,
     NgPaymentCardModule,
     PayWalletRoutingModule,
