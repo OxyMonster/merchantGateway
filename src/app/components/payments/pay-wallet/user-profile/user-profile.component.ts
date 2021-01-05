@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faTrashAlt, faPlusSquare, faCreditCard, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { UtileSericeService } from 'src/app/shared/services/utile-serice.service';
 
 
 
@@ -16,14 +18,18 @@ export class UserProfileComponent implements OnInit {
   faCreditCard = faCreditCard;
   faSignOutAlt = faSignOutAlt;
  
-  activeCategory: string = 'add'; 
+  activeCategory: string = 'ballance'; 
+
+  userInfo: any[] = []; 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private _utileService: UtileSericeService
   ) { }
 
 
   ngOnInit(): void {
+    this.getUserInfo();
   }
 
   changeClass(type: string) {
@@ -33,6 +39,28 @@ export class UserProfileComponent implements OnInit {
   logOut() {
     localStorage.clear();
     this.router.navigate(['/wallet']);
+  }; 
+
+  getUserInfo() {
+    
+    const schema  = {
+      "domainId": 2,
+      "languageId": 1,
+      "sessionId": this._utileService.getSessionId(),
+      "username": this._utileService.getUserName()
+    };  
+    console.log(schema);
+    
+    return this._utileService
+               .getUserInfo(schema)
+               .subscribe(data => {
+                 this.userInfo = [data['data']]; 
+                 console.log(this.userInfo);
+
+                 
+               }, err => { 
+                 console.log(err);
+               })
   }
 
 }

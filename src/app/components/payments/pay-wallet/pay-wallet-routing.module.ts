@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, 
     { path: 'login', component: AuthorizeComponent },
     { path: 'user-profile', canActivate: [AuthGuardGuard], component: UserProfileComponent, children: [
-      { path: '', redirectTo: 'register-new-card', pathMatch: 'full' },
+      { path: '', redirectTo: 'wallet-ballance', pathMatch: 'full' },
       { path: 'register-new-card', component: RegisterNewCardComponent },
       { path: 'my-cards', component: ListRegisteredCardsComponent },
       { path: 'delete-cards', component: DeleteRegisteredCardsComponent },

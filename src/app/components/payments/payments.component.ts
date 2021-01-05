@@ -28,7 +28,12 @@ export class PaymentsComponent implements OnInit {
   checkQueryParams(): void {
 
     if ( this.queryParams[0], this.queryParams[1], this.queryParams[2] ) {
-      this.isMerchantValid = true; 
+      this.isMerchantValid = true;
+
+      localStorage.setItem('merchantName', this.queryParams[0]);
+      localStorage.setItem('description', this.queryParams[1]); 
+      localStorage.setItem('amount', this.queryParams[2]); 
+
       console.log('correct');
       
     } else {      

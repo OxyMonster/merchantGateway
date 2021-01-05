@@ -39,7 +39,15 @@ export class WalletServiceService {
     } else {
       return this._http.post('api/' + 'cards/tbc/registered-cards', data)
     }
-  }
+  };
+
+  payByWallet(data: Object): Observable<any> {
+    if ( !isDevMode()){
+      return this._http.post(environment.urlAddress + 'client/pay-by-card', data)
+    } else {
+      return this._http.post('api/' + 'client/pay-by-card', data)
+    }
+  }; 
 
 
 }

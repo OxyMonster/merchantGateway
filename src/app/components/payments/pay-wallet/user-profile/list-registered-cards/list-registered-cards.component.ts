@@ -9,8 +9,12 @@ import { UtileSericeService } from 'src/app/shared/services/utile-serice.service
 })
 export class ListRegisteredCardsComponent implements OnInit {
 
-  registeredCardsList: any[] = ['gio', 'giorgi', 'xvicha', 'nino'];
+  registeredCardsList: any[] = ['dsfdsfsdf', 'sdfsdfsdf', 'sdfsdfsdfds', 'ewrwerwr'];
   isPayButtonActive: boolean = false; 
+  isShowBallanceActive: boolean = false; 
+  amount: string; 
+  isSelected: boolean = false; 
+  selecedCard: string; 
 
   constructor(
     private _utileService: UtileSericeService, 
@@ -19,6 +23,7 @@ export class ListRegisteredCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRegisteredCards(); 
+    this.amount = this._utileService.getAmount(); 
   }
 
   getRegisteredCards() { 
@@ -43,7 +48,12 @@ export class ListRegisteredCardsComponent implements OnInit {
   onCardSelect(selectedCard: any) {
     this.registeredCardsList = []; 
     this.registeredCardsList.push(selectedCard);
+    this.selecedCard = this.registeredCardsList[0];
+    console.log(this.registeredCardsList);
+    
     this.isPayButtonActive = true; 
+    this.isShowBallanceActive = true; 
+    this.isSelected = true;
     
   }
 

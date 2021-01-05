@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WalletServiceService } from 'src/app/services/wallet-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BankRedirectServiceService } from 'src/app/services/bank-redirect-service.service';
+import { CardServiceService } from 'src/app/services/card-service.service';
 import { UtileSericeService } from 'src/app/shared/services/utile-serice.service';
 
 @Component({
@@ -9,68 +11,76 @@ import { UtileSericeService } from 'src/app/shared/services/utile-serice.service
 })
 export class RegisterNewCardComponent implements OnInit {
 
-  cardName: string; 
-  cardNumber: string; 
+ 
   clientIP: string; 
-  confirmationToken: string; 
+  transactionID: string; 
 
-  constructor(
+  constructor( 
+    private _router: Router,
+    private _cardService: CardServiceService,
     private _utileService: UtileSericeService,
-    private _walletService: WalletServiceService
-  ){
+    private _bankRedirectService: BankRedirectServiceService
+  ) { }
 
-  };
-
-  ngOnInit(){
-
-    this.getClientIP(); 
-    this.getConfirmationToken(); 
-  };
-
-
-  getClientIP() { 
-
-    return this._utileService.getClientIP(); 
+  ngOnInit(): void {
+    this.getClientIp();  
+    this.getTransactionID();    
   }; 
 
-  getConfirmationToken() { 
-    
-    const schema = { 
-      "domainId": 2,
-      "languageId": 1,
-      "msisdn": this._utileService.getUserName(),
-      "sessionId": this._utileService.getSessionId()
-    }; 
+  getClientIp() { 
+    return this._utileService
+               .getClientIP()
+               .subscribe(data => {this.clientIP = data['ip']}); 
+  }; 
 
-    return this._walletService
-               .getConfirmationToken(schema)
-               .subscribe( data => {
-                console.log(data);
-                
+  getTransactionID() { 
+
+    const schema  = { 
+      "amount": this._utileService.getAmount(),
+      "callbackUrl": "",
+      "clientIpAddr": this.clientIP,
+      "currency": "GEL",
+      "description": this._utileService.getDescription(),
+      "hash": "",
+      "lng": "GE",
+      "merchantName": this._utileService.getMerchantName(),
+      "orderCode": 1
+    }; 
+    
+     schema.hash = this._utileService.hashString(
+       { 
+      'merchantName': this._utileService.getMerchantName(),
+      'orderCode': 1,
+      'amount': this._utileService.getAmount(),
+      'currency': schema.currency,
+      'description': this._utileService.getDescription(),
+      'lng': schema.lng,
+       }
+     )
+   
+     console.log(schema.hash);
+     
+    
+    return this._cardService
+               .getTransactionId(schema)
+               .subscribe(data => { 
+                 console.log(data);
+                 
+                  this.transactionID = data.data['transId']; 
+                  this.redirctTobank();  
+               }, err => {
+                 console.log(err);
+                 
                })
   }; 
 
-
-  onCardRegister() { 
-
-    const schema = { 
-      "amount": 0,
-      "clientIpAddr": this.clientIP,
-      "confirmationToken": this.confirmationToken,
-      "currency": "GEL",
-      "description": "card Register",
-      "domainId": 2,
-      "languageId": 1,
-      "msisdn": this._utileService.getUserName(),
-      "registeredCardId": this.cardNumber,
-      "registeredCardName": this.cardName,
-      "sessionId": this._utileService.getSessionId(),
-      "tbcCommand": "Registration"
-    };
-
-
-  }; 
-
+  redirctTobank() {
+    this._router.navigate(['/wallet/user-profile/wallet-ballance'])                 
+      return this._bankRedirectService
+                 .post({'trans_id': this.transactionID}, this._bankRedirectService.eCommerceURL);
+                 
+  
+  }
 }
 
 

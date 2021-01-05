@@ -37,14 +37,33 @@ export class PayCardComponent implements OnInit {
   }; 
 
   getTransactionID() { 
-    const schema  = { 
-      "amount": this.queryParams['amount'],
-      "clientIpAddr": this.clientIP,
-      "description": this.queryParams['description'],
-      "languageId": 1,
-      "merchantName": this.queryParams['merchantName']
-    }
 
+    const schema  = { 
+      "amount": this._utileService.getAmount(),
+      "callbackUrl": "",
+      "clientIpAddr": this.clientIP,
+      "currency": "GEL",
+      "description": this._utileService.getDescription(),
+      "hash": "",
+      "lng": "GE",
+      "merchantName": this._utileService.getMerchantName(),
+      "orderCode": 1
+    }; 
+    
+     schema.hash = this._utileService.hashString(
+       { 
+      'merchantName': this._utileService.getMerchantName(),
+      'orderCode': 1,
+      'amount': this._utileService.getAmount(),
+      'currency': schema.currency,
+      'description': this._utileService.getDescription(),
+      'lng': schema.lng,
+       }
+     )
+   
+     console.log(schema.hash);
+     
+    
     return this._cardService
                .getTransactionId(schema)
                .subscribe(data => { 

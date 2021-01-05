@@ -74,7 +74,7 @@ input {
 .container {
     width: 100%;
     max-width: 400px;
-    max-height: 251px;
+    max-height: 151px;
     height: 54vw;
     padding: 20px;
 }
@@ -96,6 +96,7 @@ input {
     -webkit-box-shadow: 1px 5px 6px 0px black;
     box-shadow: 1px 5px 6px 0px black;
     border-radius: 22px;
+
 }
 
 #generatecard{
@@ -302,10 +303,11 @@ input {
 .container {
     perspective: 1000px;
     margin: 0;
+    
 }
 
 .creditcard {
-    width: 250px;
+    width: 235px;
     max-width: 400px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
@@ -313,7 +315,8 @@ input {
     -webkit-transition: -webkit-transform 0.6s;
     transition: transform 0.6s;
     transition: transform 0.6s, -webkit-transform 0.6s;
-    cursor: pointer;
+    cursor: pointer; 
+    transition: 5s;   
 }
 
 .creditcard .front,

@@ -1,12 +1,25 @@
-<div class="w-100 h-100 p-3 row justify-content-start">
-    <div class="col-lg-4" *ngFor="let item of registeredCardsList">
+<div class="w-100 h-100 p-3 row justify-content-start" [ngClass]="{'p-5': isSelected}">
+    <div class="d-flex"
+         *ngFor="let item of registeredCardsList"
+         [ngClass]="{'col-12': isSelected, 'col-lg-6': !isSelected, 'justify-content-start': !isSelected, 'justify-content-center': isSelected}">
         <app-card [cardName] = 'item' 
-                  (click) = 'onCardSelect(item)'></app-card>
+                  (click) = 'onCardSelect(item)'>
+        </app-card>
     </div>
-    <div *ngIf="isPayButtonActive" class="col-12 d-flex justify-content-end">
-        <div class="mt-5">
-            <!-- <button class="btn btn-primary" (click) = 'onCardRegister()'>დამატება</button> -->
-            <a class="button">გადახდა</a>
-        </div>
+    <div class="box col-12 info mt-5" *ngIf="isSelected">
+        <a class="locker-box h-100">
+            <div class="row no-gutters h-100" style="padding-right: 20px;">
+                <div class="col-12 d-flex justify-content-between h-100 align-items-center">
+                  <p class="pt-3">{{'სულ გადასახდელი: '+ amount + ' ₾'}}</p>
+                  <a class="button m-0">გადახდა</a>
+
+                </div>
+                
+            </div>
+            <div class="bg">
+                <img src="https://www.usa2georgia.com/img/locker-box-bg.svg" alt="" class="mCS_img_loaded">
+            </div>
+            
+        </a>
     </div>
-</div>
+</div> 

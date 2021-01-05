@@ -4,6 +4,10 @@ $pink-light: #ffe0e6;
 $green: #04cba0;
 $green-dark: #01ac88;
 $white: white;
+@font-face {
+	font-family: mrgvlovani;
+	src: url(../../../../../../assets/fonts/bpg-mrgvlovani-caps-webfont.ttf) format("opentype");
+  };
 .button {
     margin-top: 4rem;
     padding: 1.2rem 3rem;
@@ -15,4 +19,44 @@ $white: white;
     &:hover {
       background-color: $green-dark;
     }
+  };
+
+  .box {
+    p { 
+
+      font-family: 'mrgvlovani';
+    }
+
   }
+
+.aside .middle .locker-box {
+  position: relative;
+  display: block;
+  border-radius: 6px;
+  padding: 24px;
+  margin: 16px 0;
+  background-image: linear-gradient(229deg, #ff2f00, #353a44);
+}
+
+.bg { 
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.icon { 
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: #f68424;
+  transition: background-color .3s;
+  z-index: 1;
+};
+
+.info { 
+  height: 123px;
+  background-color: #efefef;
+
+}

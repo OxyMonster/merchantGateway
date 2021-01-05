@@ -1,1 +1,23 @@
-<p>wallet-ballance-pay works!</p>
+<div class="wallet p-5 row align-items-center h-100">
+  <div class="col-12 box" style="height: 123px;">
+      <a class="locker-box locker-box-first d-xl-block h-100">
+          <div class="row no-gutters h-100" style="padding-right: 20px;">
+              <div class="col-12 d-flex justify-content-between h-100 align-items-center">
+                <p class="pt-3">{{'სულ გადასახდელი: '+ amount + ' ₾'}}</p>
+                <ng-container *ngIf="!isLoading; else showLoading">
+                    <a class="button m-0" (click) = 'onWalletPay()'>გადახდა</a>
+                </ng-container>
+                <ng-template #showLoading>
+                    <app-loading-spinner></app-loading-spinner>
+                </ng-template>
+          
+              </div>
+              
+          </div>
+          <div class="bg">
+              <img src="https://www.usa2georgia.com/img/locker-box-bg.svg" alt="" class="mCS_img_loaded">
+          </div>
+          
+      </a>
+  </div>
+</div>

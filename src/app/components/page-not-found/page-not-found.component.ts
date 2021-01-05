@@ -16,6 +16,6 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   redirectToLogin() {
-    this._router.navigate(['/wallet/login'])
+    this._router.navigate(['/wallet/user-profile'])
   }
 }
