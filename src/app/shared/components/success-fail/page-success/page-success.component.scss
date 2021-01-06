@@ -1,0 +1,29 @@
+ 
+@font-face {
+	font-family: mrgvali;
+	src: url(../../../../../assets/fonts/bpg-mrgvlovani-caps-webfont.ttf) format("opentype");
+  };
+
+
+.img {
+    width: 700px;
+    height: 700px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+};
+
+.text { 
+    p {
+        font-family: 'mrgvali';
+        font-size: 25px;
+        color: #04cba0;
+    };
+    
+    span {
+        font-family: 'mrgvali';
+        font-size: 25px;
+        color: #04cba0;
+    }
+}

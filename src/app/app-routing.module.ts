@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
      //  & & & Lazy Load * * * *
-  { path: '', loadChildren: './components/payments/payments.module#PaymentsModule' }, 
+  { path: '', loadChildren: './components/payments/payments.module#PaymentsModule' },
+  
 ]; 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

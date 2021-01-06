@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WalletServiceService } from 'src/app/services/wallet-service.service';
 import { UtileSericeService } from 'src/app/shared/services/utile-serice.service';
 import * as shajs from 'sha.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet-ballance-pay',
@@ -17,7 +18,8 @@ export class WalletBallancePayComponent implements OnInit {
 
   constructor(
     private _walletService: WalletServiceService,
-    private _utileService: UtileSericeService
+    private _utileService: UtileSericeService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -75,9 +77,12 @@ export class WalletBallancePayComponent implements OnInit {
                .subscribe( data => {
                  console.log(data);
                  this.isLoading = false;
+                 this._router.navigate(['/success'])
                }, err => {
                  console.log(err);
                  this.isLoading = false;
+                 this._router.navigate(['/fail'])
+
 
                }); 
   }; 
