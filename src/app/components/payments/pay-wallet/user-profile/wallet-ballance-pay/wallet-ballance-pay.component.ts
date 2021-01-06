@@ -79,7 +79,7 @@ export class WalletBallancePayComponent implements OnInit {
                  this.isLoading = false;
                  this._router.navigate(['/success'])
                }, err => {
-                 console.log(err);
+                 console.log(err); 
                  this.isLoading = false;
                  this._router.navigate(['/fail'])
 

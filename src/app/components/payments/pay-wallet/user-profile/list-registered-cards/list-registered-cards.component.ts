@@ -15,6 +15,7 @@ export class ListRegisteredCardsComponent implements OnInit {
   amount: string; 
   isSelected: boolean = false; 
   selecedCard: string; 
+  confirmationToken: string; 
 
   constructor(
     private _utileService: UtileSericeService, 
@@ -24,6 +25,7 @@ export class ListRegisteredCardsComponent implements OnInit {
   ngOnInit(): void {
     this.getRegisteredCards(); 
     this.amount = this._utileService.getAmount(); 
+    this.getConfirmToken()
   }
 
   getRegisteredCards() { 
@@ -55,6 +57,32 @@ export class ListRegisteredCardsComponent implements OnInit {
     this.isShowBallanceActive = true; 
     this.isSelected = true;
     
-  }
+  }; 
+
+  // (((((  ************* PAY ************* )))))
+
+  getConfirmToken() {
+    const schema = {
+        "domainId": 2,
+        "languageId": 1,
+        "msisdn": this._utileService.getUserName(),
+        "sessionId": this._utileService.getSessionId()
+    }; 
+
+    return this._walletService
+               .getConfirmationToken(schema)
+               .subscribe( data => {
+                 
+                 this.confirmationToken = data['data']; 
+                 console.log(this.confirmationToken);
+                 
+                 
+               }, err => {
+                 console.log(err);
+                 
+               } )
+  }; 
+
+
 
 }

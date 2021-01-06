@@ -116,6 +116,9 @@ ul, li {
 #wrapper {
 	@media (max-width: 1355px) {
 		width: auto !important;
+		height: 100% !important;
+		display: block;
+		position: relative;
 	}
 	width: 1150px;
 	height: 500px;
@@ -140,6 +143,11 @@ ul, li {
 //     src: url(../../../../../assets/fonts/bpg-mrgvlovani-caps-webfont.ttf) format("mrgvlovani");
 //   }
 #left-side {
+	@media (max-width: 1355px) {
+		width: 100% !important;
+		height: 25% !important;
+	
+	}
 	height: 70%;
 	width: 43%;
 	display: flex;
@@ -180,6 +188,10 @@ ul, li {
 }
 
 #border {
+	@media (max-width: 1355px) {
+		display: none;
+	}; 
+
 	height: 288px;
 	width: 1px;
 	background-color: rgba($black, .2);
@@ -222,6 +234,10 @@ ul, li {
 }
 
 #right-side {
+	@media (max-width: 1355px) {
+		width: 100%;
+
+	}; 
 	height: 100%;
     width: 75%;
     overflow-x: hidden;
