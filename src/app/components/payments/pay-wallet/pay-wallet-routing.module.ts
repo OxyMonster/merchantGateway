@@ -11,6 +11,7 @@ import { DeleteRegisteredCardsComponent } from './user-profile/delete-registered
 import { WalletBallancePayComponent } from './user-profile/wallet-ballance-pay/wallet-ballance-pay.component';
 
 const routes: Routes = [
+
   { path: '', component: PayWalletComponent, children: [
     { path: '', redirectTo: 'login', pathMatch: 'full' }, 
     { path: 'login', component: AuthorizeComponent },
@@ -20,9 +21,9 @@ const routes: Routes = [
       { path: 'my-cards', component: ListRegisteredCardsComponent },
       { path: 'delete-cards', component: DeleteRegisteredCardsComponent },
       { path: 'wallet-ballance', component: WalletBallancePayComponent },
-
     ]}
   ]}, 
+  
 ];
 
 

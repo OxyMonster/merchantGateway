@@ -46,7 +46,6 @@ export class AuthorizeComponent implements OnInit {
 
                  } else {
                    console.log('arasowri monacemebi');
-                   
                  }; 
                  
                }, err => {

@@ -46,7 +46,8 @@ export class PaymentsComponent implements OnInit {
       console.log('false');
       this._router.navigate(['err']);
       this.isMerchantValid = false;
-    }
+    };
+    
   }; 
 
   redirectToLogin() {
