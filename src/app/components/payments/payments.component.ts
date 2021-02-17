@@ -16,23 +16,29 @@ export class PaymentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._route.queryParams.subscribe( data => {
-      console.log(data);
-      
-    this.queryParams = Object.values(data);     
-    this.checkQueryParams();
+    this.getSetQueryParams();
 
-  });    
   }
 
-  checkQueryParams(): void {
 
-    if ( this.queryParams[0], this.queryParams[1], this.queryParams[2] ) {
-      this.isMerchantValid = true;
+  getSetQueryParams() {
+    
+    this._route.queryParams.subscribe( data => {
+    this.queryParams = data;   
+    console.log(this.queryParams);
+    this.saveParamsToLocalStorage();
+    });
+  };
 
-      localStorage.setItem('merchantName', this.queryParams[0]);
-      localStorage.setItem('description', this.queryParams[1]); 
-      localStorage.setItem('amount', this.queryParams[2]); 
+  saveParamsToLocalStorage(): void {
+
+    if ( this.queryParams['amount'] ) {
+      this.isMerchantValid = true;  
+      // * * * Clear localStorage * * * 
+      localStorage.clear();
+      localStorage.setItem('merchantName', this.queryParams['merchantName']);
+      localStorage.setItem('description', this.queryParams['description']); 
+      localStorage.setItem('amount', this.queryParams['amount']); 
 
       console.log('correct');
       
@@ -45,7 +51,7 @@ export class PaymentsComponent implements OnInit {
 
   redirectToLogin() {
     this._router.navigate(['/wallet']); 
-    
-  }
+
+  };
 
 }

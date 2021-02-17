@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "merchantGateway"
+    }
+  },
+  "defaultProject": "merchantGateway",
+  "cli": {
+    "analytics": "adfa9cea-83ad-4963-9492-dacfa437682c"
+  }
 }
